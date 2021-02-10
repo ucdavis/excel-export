@@ -9,7 +9,7 @@ function App() {
   const chartRef = useRef<any>(null);
 
   const renderLineChart = (
-    <LineChart ref={chartRef} width={400} height={400} data={data}>
+    <LineChart ref={chartRef} width={400} height={400} data={chartData}>
       <Line type="monotone" dataKey="uv" stroke="#8884d8" />
     </LineChart>
   );
@@ -18,9 +18,53 @@ function App() {
     // https://github.com/exceljs/exceljs#interface
     const workbook = new ExcelJS.Workbook();
     const worksheet = workbook.addWorksheet("ExcelJS sheet");
-    const row = worksheet.getRow(5);
-    row.getCell(1).value = 5; // A5's value set to 5
-    row.getCell("C").value = new Date(); // C5's value set to now
+
+    // const row = worksheet.getRow(5);
+    // row.getCell(1).value = 5; // A5's value set to 5
+    // row.getCell("C").value = new Date(); // C5's value set to now
+
+    const yearlyHeaders = [];
+
+    for (let i = 0; i < 30; i++) {
+      yearlyHeaders.push({ name: 'Y' + (new Date().getFullYear() + i)});
+    }
+
+    worksheet.addTable({
+      name: "TechPerf",
+      ref: "B2",
+      headerRow: true,
+      totalsRow: false,
+      columns: [{ name: "Technical Performance" }, { name: " " }],
+      rows: [
+        ["Project Prescription", "Clearcut"],
+        ["Facility Type", "Bio Fuel"],
+        ["Capital Cost ($)", 123.123],
+      ],
+    });
+
+    worksheet.addTable({
+      name: "supply",
+      ref: "B12",
+      headerRow: true,
+      totalsRow: false,
+      columns: [
+        { name: "Resource Supply (ton)" },
+        { name: "Total" },
+        ...yearlyHeaders,
+      ],
+      rows: [
+        [
+          "Feedstock ",
+          data.Resources.Feedstock.Total,
+          ...data.Resources.Feedstock.Yearly,
+        ],
+        [
+          "Coproduct",
+          data.Resources.Coproduct.Total,
+          ...data.Resources.Coproduct.Yearly,
+        ],
+      ],
+    });
 
     // turn the chart into an image and embed it
     if (chartRef) {
@@ -36,11 +80,11 @@ function App() {
       });
 
       // insert an image over B2:D6
-      worksheet.addImage(chartImageId2, "B8:H20");
+      worksheet.addImage(chartImageId2, "B75:J100");
     }
 
     const workbookBuffer = await workbook.xlsx.writeBuffer();
-    
+
     // send file to client
     saveAs(
       new Blob([workbookBuffer], { type: "application/octet-stream" }),
@@ -57,8 +101,25 @@ function App() {
   );
 }
 
+const fakeYearlyData = () => Array.from({ length: 30 }, () =>
+  Math.floor(Math.random() * 40)
+);
+
+const data = {
+  "Resources": {
+    "Feedstock": {
+      "Total": 123,
+      "Yearly": fakeYearlyData()
+    },
+    "Coproduct": {
+      "Total": 321,
+      "Yearly": fakeYearlyData()
+    }
+  }
+};
+
 // some fake data to make the line chart look decent
-const data = [
+const chartData = [
   {
     name: "Page A",
     uv: 4000,
