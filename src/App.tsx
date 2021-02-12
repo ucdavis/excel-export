@@ -26,7 +26,7 @@ function App() {
     const yearlyHeaders = [];
 
     for (let i = 0; i < 30; i++) {
-      yearlyHeaders.push({ name: 'Y' + (new Date().getFullYear() + i)});
+      yearlyHeaders.push({ name: "Y" + (new Date().getFullYear() + i) });
     }
 
     worksheet.addTable({
@@ -66,6 +66,45 @@ function App() {
       ],
     });
 
+    worksheet.addTable({
+      name: "analysis",
+      ref: "B16",
+      headerRow: true,
+      totalsRow: false,
+      columns: [
+        { name: "Environmental Analysis" },
+        { name: "Unit" },
+        { name: "Total" },
+        ...yearlyHeaders,
+      ],
+      rows: [
+        [
+          "Diesel",
+          data.Environemntal.Diesel.Unit,
+          data.Environemntal.Diesel.Total,
+          ...data.Environemntal.Diesel.Yearly,
+        ],
+        [
+          "Gasoline",
+          data.Environemntal.Gasoline.Unit,
+          data.Environemntal.Gasoline.Total,
+          ...data.Environemntal.Gasoline.Yearly,
+        ],
+        [
+          "Jet Fuel",
+          data.Environemntal.JetFuel.Unit,
+          data.Environemntal.JetFuel.Total,
+          ...data.Environemntal.JetFuel.Yearly,
+        ],
+        [
+          "Transport Distance",
+          data.Environemntal.TransportDistance.Unit,
+          data.Environemntal.TransportDistance.Total,
+          ...data.Environemntal.TransportDistance.Yearly,
+        ],
+      ],
+    });
+
     // turn the chart into an image and embed it
     if (chartRef) {
       // we should always have the chart but if it's null for some reason skip it instead of breaking
@@ -101,21 +140,42 @@ function App() {
   );
 }
 
-const fakeYearlyData = () => Array.from({ length: 30 }, () =>
-  Math.floor(Math.random() * 40)
-);
+const fakeYearlyData = () =>
+  Array.from({ length: 30 }, () => Math.floor(Math.random() * 40));
 
 const data = {
-  "Resources": {
-    "Feedstock": {
-      "Total": 123,
-      "Yearly": fakeYearlyData()
+  Resources: {
+    Feedstock: {
+      Total: 123,
+      Yearly: fakeYearlyData(),
     },
-    "Coproduct": {
-      "Total": 321,
-      "Yearly": fakeYearlyData()
-    }
-  }
+    Coproduct: {
+      Total: 321,
+      Yearly: fakeYearlyData(),
+    },
+  },
+  Environemntal: {
+    Diesel: {
+      Unit: "gal",
+      Total: 123,
+      Yearly: fakeYearlyData(),
+    },
+    Gasoline: {
+      Unit: "gal",
+      Total: 456,
+      Yearly: fakeYearlyData(),
+    },
+    JetFuel: {
+      Unit: "gal",
+      Total: 789,
+      Yearly: fakeYearlyData(),
+    },
+    TransportDistance: {
+      Unit: "km",
+      Total: 101112,
+      Yearly: fakeYearlyData(),
+    },
+  },
 };
 
 // some fake data to make the line chart look decent
