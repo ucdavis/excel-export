@@ -105,6 +105,150 @@ function App() {
       ],
     });
 
+    worksheet.addTable({
+      name: "lci",
+      ref: "B22",
+      headerRow: true,
+      totalsRow: false,
+      columns: [
+        { name: "LCI Results" },
+        { name: "Unit" },
+        { name: "Total" },
+        ...yearlyHeaders,
+      ],
+      rows: [
+        [
+          "CO2",
+          data.LCI.CO2.Unit,
+          data.LCI.CO2.Total,
+          ...data.LCI.CO2.Yearly,
+        ],
+        [
+          "CH4",
+          data.LCI.CH4.Unit,
+          data.LCI.CH4.Total,
+          ...data.LCI.CH4.Yearly,
+        ],
+        [
+          "N2O",
+          data.LCI.N2O.Unit,
+          data.LCI.N2O.Total,
+          ...data.LCI.N2O.Yearly,
+        ],
+        [
+          "CO2e",
+          data.LCI.CO2e.Unit,
+          data.LCI.CO2e.Total,
+          ...data.LCI.CO2e.Yearly,
+        ],
+        [
+          "CO",
+          data.LCI.CO.Unit,
+          data.LCI.CO.Total,
+          ...data.LCI.CO.Yearly,
+        ],
+        [
+          "NOx",
+          data.LCI.NOx.Unit,
+          data.LCI.NOx.Total,
+          ...data.LCI.NOx.Yearly,
+        ],
+        [
+          "NH3",
+          data.LCI.NH3.Unit,
+          data.LCI.NH3.Total,
+          ...data.LCI.NH3.Yearly,
+        ],
+        [
+          "PM10",
+          data.LCI.CO2.Unit,
+          data.LCI.CO2.Total,
+          ...data.LCI.CO2.Yearly,
+        ],
+        [
+          "PM2.5",
+          data.LCI.PM25.Unit,
+          data.LCI.PM25.Total,
+          ...data.LCI.PM25.Yearly,
+        ],
+        [
+          "SO2",
+          data.LCI.SO2.Unit,
+          data.LCI.SO2.Total,
+          ...data.LCI.SO2.Yearly,
+        ],
+        [
+          "SOx",
+          data.LCI.SOx.Unit,
+          data.LCI.SOx.Total,
+          ...data.LCI.SOx.Yearly,
+        ],
+        [
+          "VOCs",
+          data.LCI.VOCs.Unit,
+          data.LCI.VOCs.Total,
+          ...data.LCI.VOCs.Yearly,
+        ],
+        [
+          "Carbon Intensity",
+          data.LCI.CarbonIntensity.Unit,
+          data.LCI.CarbonIntensity.Total,
+          ...data.LCI.CarbonIntensity.Yearly,
+        ],
+      ],
+    });
+
+    worksheet.addTable({
+      name: "lcia",
+      ref: "B37",
+      headerRow: true,
+      totalsRow: false,
+      columns: [
+        { name: "LCIA Results" },
+        { name: "Unit" },
+        { name: "Total" },
+        ...yearlyHeaders,
+      ],
+      rows: [
+        [
+          "Global Warming Air",
+          data.LCIA.GlobalWarmingAir.Unit,
+          data.LCIA.GlobalWarmingAir.Total,
+          ...data.LCIA.GlobalWarmingAir.Yearly,
+        ],
+        [
+          "Acidification Air",
+          data.LCIA.AcidificationAir.Unit,
+          data.LCIA.AcidificationAir.Total,
+          ...data.LCIA.AcidificationAir.Yearly,
+        ],
+        [
+          "HH Particulate Air",
+          data.LCIA.HHParticulateAir.Unit,
+          data.LCIA.HHParticulateAir.Total,
+          ...data.LCIA.HHParticulateAir.Yearly,
+        ],
+        [
+          "Euthrophication Air",
+          data.LCIA.EuthrophicationAir.Unit,
+          data.LCIA.EuthrophicationAir.Total,
+          ...data.LCIA.EuthrophicationAir.Yearly,
+        ],
+        [
+          "Euthrophication Water",
+          data.LCIA.EuthrophicationWater.Unit,
+          data.LCIA.EuthrophicationWater.Total,
+          ...data.LCIA.EuthrophicationWater.Yearly,
+        ],
+        [
+          "Smog Air",
+          data.LCIA.SmogAir.Unit,
+          data.LCIA.SmogAir.Total,
+          ...data.LCIA.SmogAir.Yearly,
+        ],
+      ]
+    })
+
     // turn the chart into an image and embed it
     if (chartRef) {
       // we should always have the chart but if it's null for some reason skip it instead of breaking
@@ -176,6 +320,105 @@ const data = {
       Yearly: fakeYearlyData(),
     },
   },
+  LCI: {
+    CO2: {
+      Unit: "kg",
+      Total: 123,
+      Yearly: fakeYearlyData(),
+    },
+    CH4: {
+      Unit: "g",
+      Total: 235,
+      Yearly: fakeYearlyData(),
+    },
+    N2O: {
+      Unit: "g",
+      Total: 364,
+      Yearly: fakeYearlyData(),
+    },
+    CO2e: {
+      Unit: "kg",
+      Total: 785,
+      Yearly: fakeYearlyData(),
+    },
+    CO: {
+      Unit: "kg",
+      Total: 918,
+      Yearly: fakeYearlyData(),
+    },
+    NOx: {
+      Unit: "g",
+      Total: 534,
+      Yearly: fakeYearlyData(),
+    },
+    NH3: {
+      Unit: "g",
+      Total: 123,
+      Yearly: fakeYearlyData(),
+    },
+    PM10: {
+      Unit: "g",
+      Total: 324,
+      Yearly: fakeYearlyData(),
+    },
+    PM25: {
+      Unit: "g",
+      Total: 123,
+      Yearly: fakeYearlyData(),
+    },
+    SO2: {
+      Unit: "g",
+      Total: 903,
+      Yearly: fakeYearlyData(),
+    },
+    SOx: {
+      Unit: "g",
+      Total: 234,
+      Yearly: fakeYearlyData(),
+    },
+    VOCs: {
+      Unit: "g",
+      Total: 535,
+      Yearly: fakeYearlyData(),
+    },
+    CarbonIntensity: {
+      Unit: "g",
+      Total: 234,
+      Yearly: fakeYearlyData(),
+    },
+  },
+  LCIA: {
+    GlobalWarmingAir: {
+      Unit: "kg CO2 eq",
+      Total: 234,
+      Yearly: fakeYearlyData(),
+    },
+    AcidificationAir: {
+      Unit: "kg SO2 eq",
+      Total: 234,
+      Yearly: fakeYearlyData(),
+    },
+    HHParticulateAir: {
+      Unit: "PM2.5 eq",
+      Total: 234,
+      Yearly: fakeYearlyData(),
+    },
+    EuthrophicationAir: {
+      Unit: "kg N eq",
+      Total: 234,
+      Yearly: fakeYearlyData(),
+    },
+    EuthrophicationWater: {
+      Unit: "kg N eq",
+      Total: 234,
+      Yearly: fakeYearlyData(),
+    },
+    SmogAir: {
+      Unit: "kg O3 eq",
+      Total: 234,
+      Yearly: fakeYearlyData(),
+    },
+  }
 };
 
 // some fake data to make the line chart look decent
