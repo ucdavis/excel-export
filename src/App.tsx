@@ -118,22 +118,22 @@ function App() {
       ],
       rows: [
         [
-          "CO2",
-          data.LCI.CO2.Unit,
-          data.LCI.CO2.Total,
-          ...data.LCI.CO2.Yearly,
+          "CO2", 
+          data.LCI.CO2.Unit, 
+          data.LCI.CO2.Total, 
+          ...data.LCI.CO2.Yearly
         ],
         [
-          "CH4",
-          data.LCI.CH4.Unit,
-          data.LCI.CH4.Total,
-          ...data.LCI.CH4.Yearly,
+          "CH4", 
+          data.LCI.CH4.Unit, 
+          data.LCI.CH4.Total, 
+          ...data.LCI.CH4.Yearly
         ],
         [
-          "N2O",
-          data.LCI.N2O.Unit,
-          data.LCI.N2O.Total,
-          ...data.LCI.N2O.Yearly,
+          "N2O", 
+          data.LCI.N2O.Unit, 
+          data.LCI.N2O.Total, 
+          ...data.LCI.N2O.Yearly
         ],
         [
           "CO2e",
@@ -142,28 +142,28 @@ function App() {
           ...data.LCI.CO2e.Yearly,
         ],
         [
-          "CO",
-          data.LCI.CO.Unit,
-          data.LCI.CO.Total,
-          ...data.LCI.CO.Yearly,
+          "CO", 
+          data.LCI.CO.Unit, 
+          data.LCI.CO.Total, 
+          ...data.LCI.CO.Yearly
         ],
         [
-          "NOx",
-          data.LCI.NOx.Unit,
-          data.LCI.NOx.Total,
-          ...data.LCI.NOx.Yearly,
+          "NOx", 
+          data.LCI.NOx.Unit, 
+          data.LCI.NOx.Total, 
+          ...data.LCI.NOx.Yearly
         ],
         [
-          "NH3",
-          data.LCI.NH3.Unit,
-          data.LCI.NH3.Total,
-          ...data.LCI.NH3.Yearly,
+          "NH3", 
+          data.LCI.NH3.Unit, 
+          data.LCI.NH3.Total, 
+          ...data.LCI.NH3.Yearly
         ],
         [
-          "PM10",
-          data.LCI.CO2.Unit,
-          data.LCI.CO2.Total,
-          ...data.LCI.CO2.Yearly,
+          "PM10", 
+          data.LCI.CO2.Unit, 
+          data.LCI.CO2.Total, 
+          ...data.LCI.CO2.Yearly
         ],
         [
           "PM2.5",
@@ -172,16 +172,16 @@ function App() {
           ...data.LCI.PM25.Yearly,
         ],
         [
-          "SO2",
-          data.LCI.SO2.Unit,
-          data.LCI.SO2.Total,
-          ...data.LCI.SO2.Yearly,
+          "SO2", 
+          data.LCI.SO2.Unit, 
+          data.LCI.SO2.Total, 
+          ...data.LCI.SO2.Yearly
         ],
         [
-          "SOx",
-          data.LCI.SOx.Unit,
-          data.LCI.SOx.Total,
-          ...data.LCI.SOx.Yearly,
+          "SOx", 
+          data.LCI.SOx.Unit, 
+          data.LCI.SOx.Total, 
+          ...data.LCI.SOx.Yearly
         ],
         [
           "VOCs",
@@ -246,8 +246,167 @@ function App() {
           data.LCIA.SmogAir.Total,
           ...data.LCIA.SmogAir.Yearly,
         ],
-      ]
-    })
+      ],
+    });
+
+    worksheet.addTable({
+      name: "technoeconomic",
+      ref: "B45",
+      headerRow: true,
+      totalsRow: false,
+      columns: [
+        { name: "Technoeconomic Analysis" },
+        { name: "Unit" },
+        { name: "Total" },
+        ...yearlyHeaders,
+      ],
+      rows: [
+        [
+          "Harvest Cost",
+          data.TechnoeconomicAnalysis.HarvestCost.Unit,
+          data.TechnoeconomicAnalysis.HarvestCost.Total,
+          ...data.TechnoeconomicAnalysis.HarvestCost.Yearly,
+        ],
+        [
+          "Transport Cost",
+          data.TechnoeconomicAnalysis.TransportCost.Unit,
+          data.TechnoeconomicAnalysis.TransportCost.Total,
+          ...data.TechnoeconomicAnalysis.TransportCost.Yearly,
+        ],
+        [
+          "Move-in Cost",
+          data.TechnoeconomicAnalysis.MoveInCost.Unit,
+          data.TechnoeconomicAnalysis.MoveInCost.Total,
+          ...data.TechnoeconomicAnalysis.MoveInCost.Yearly,
+        ],
+        [
+          "Feedstock Cost",
+          data.TechnoeconomicAnalysis.FeedstockCost.Unit,
+          data.TechnoeconomicAnalysis.FeedstockCost.Total,
+          ...data.TechnoeconomicAnalysis.FeedstockCost.Yearly,
+        ],
+        [
+          "Equity Recovery",
+          data.TechnoeconomicAnalysis.EquityRecovery.Unit,
+          data.TechnoeconomicAnalysis.EquityRecovery.Total,
+          ...data.TechnoeconomicAnalysis.EquityRecovery.Yearly,
+        ],
+        [
+          "Equity Interest",
+          data.TechnoeconomicAnalysis.EquityInterest.Unit,
+          data.TechnoeconomicAnalysis.EquityInterest.Total,
+          ...data.TechnoeconomicAnalysis.EquityInterest.Yearly,
+        ],
+        [
+          "Equity Principal Paid",
+          data.TechnoeconomicAnalysis.EquityPrincipalPaid.Unit,
+          data.TechnoeconomicAnalysis.EquityPrincipalPaid.Total,
+          ...data.TechnoeconomicAnalysis.EquityPrincipalPaid.Yearly,
+        ],
+        [
+          "Equity Principal Remaining",
+          data.TechnoeconomicAnalysis.EquityPrincipalRemaining.Unit,
+          data.TechnoeconomicAnalysis.EquityPrincipalRemaining.Total,
+          ...data.TechnoeconomicAnalysis.EquityPrincipalRemaining.Yearly,
+        ],
+        [
+          "Debt Recovery",
+          data.TechnoeconomicAnalysis.DebtRecovery.Unit,
+          data.TechnoeconomicAnalysis.DebtRecovery.Total,
+          ...data.TechnoeconomicAnalysis.DebtRecovery.Yearly,
+        ],
+        [
+          "Debt Interest",
+          data.TechnoeconomicAnalysis.DebtInterest.Unit,
+          data.TechnoeconomicAnalysis.DebtInterest.Total,
+          ...data.TechnoeconomicAnalysis.DebtInterest.Yearly,
+        ],
+        [
+          "Debt Principal Paid",
+          data.TechnoeconomicAnalysis.DebtPrincipalPaid.Unit,
+          data.TechnoeconomicAnalysis.DebtPrincipalPaid.Total,
+          ...data.TechnoeconomicAnalysis.DebtPrincipalPaid.Yearly,
+        ],
+        [
+          "Debt Principal Remaining",
+          data.TechnoeconomicAnalysis.DebtPrincipalRemaining.Unit,
+          data.TechnoeconomicAnalysis.DebtPrincipalRemaining.Total,
+          ...data.TechnoeconomicAnalysis.DebtPrincipalRemaining.Yearly,
+        ],
+        [
+          "Non-fuel Expenses",
+          data.TechnoeconomicAnalysis.NonFuelExpenses.Unit,
+          data.TechnoeconomicAnalysis.NonFuelExpenses.Total,
+          ...data.TechnoeconomicAnalysis.NonFuelExpenses.Yearly,
+        ],
+        [
+          "Debt Reserve",
+          data.TechnoeconomicAnalysis.DebtReserve.Unit,
+          data.TechnoeconomicAnalysis.DebtReserve.Total,
+          ...data.TechnoeconomicAnalysis.DebtReserve.Yearly,
+        ],
+        [
+          "Deprecation",
+          data.TechnoeconomicAnalysis.Deprecation.Unit,
+          data.TechnoeconomicAnalysis.Deprecation.Total,
+          ...data.TechnoeconomicAnalysis.Deprecation.Yearly,
+        ],
+        [
+          "Income--Capacity",
+          data.TechnoeconomicAnalysis.IncomeCapacity.Unit,
+          data.TechnoeconomicAnalysis.IncomeCapacity.Total,
+          ...data.TechnoeconomicAnalysis.IncomeCapacity.Yearly,
+        ],
+        [
+          "Interest on Debt Reserve",
+          data.TechnoeconomicAnalysis.InterestDebtReserve.Unit,
+          data.TechnoeconomicAnalysis.InterestDebtReserve.Total,
+          ...data.TechnoeconomicAnalysis.InterestDebtReserve.Yearly,
+        ],
+        [
+          "Taxes w/o credit",
+          data.TechnoeconomicAnalysis.TaxesWithoutCredit.Unit,
+          data.TechnoeconomicAnalysis.TaxesWithoutCredit.Total,
+          ...data.TechnoeconomicAnalysis.TaxesWithoutCredit.Yearly,
+        ],
+        [
+          "Tax Credit",
+          data.TechnoeconomicAnalysis.TaxCredit.Unit,
+          data.TechnoeconomicAnalysis.TaxCredit.Total,
+          ...data.TechnoeconomicAnalysis.TaxCredit.Yearly,
+        ],
+        [
+          "Taxes",
+          data.TechnoeconomicAnalysis.Taxes.Unit,
+          data.TechnoeconomicAnalysis.Taxes.Total,
+          ...data.TechnoeconomicAnalysis.Taxes.Yearly,
+        ],
+        [
+          "Energy Revenue Required",
+          data.TechnoeconomicAnalysis.EnergyRevenueRequired.Unit,
+          data.TechnoeconomicAnalysis.EnergyRevenueRequired.Total,
+          ...data.TechnoeconomicAnalysis.EnergyRevenueRequired.Yearly,
+        ],
+        [
+          "Energy Revenue Required (PW)",
+          data.TechnoeconomicAnalysis.EnergyRevenueRequiredPW.Unit,
+          data.TechnoeconomicAnalysis.EnergyRevenueRequiredPW.Total,
+          ...data.TechnoeconomicAnalysis.EnergyRevenueRequiredPW.Yearly,
+        ],
+        [
+          "Current $ LCOE",
+          data.TechnoeconomicAnalysis.Current$LCOE.Unit,
+          data.TechnoeconomicAnalysis.Current$LCOE.Total,
+          ...data.TechnoeconomicAnalysis.Current$LCOE.Yearly,
+        ],
+        [
+          "Constant $ LCOE",
+          data.TechnoeconomicAnalysis.Constant$LCOE.Unit,
+          data.TechnoeconomicAnalysis.Constant$LCOE.Total,
+          ...data.TechnoeconomicAnalysis.Constant$LCOE.Yearly,
+        ],
+      ],
+    });
 
     // turn the chart into an image and embed it
     if (chartRef) {
@@ -418,7 +577,129 @@ const data = {
       Total: 234,
       Yearly: fakeYearlyData(),
     },
-  }
+  },
+  TechnoeconomicAnalysis: {
+    HarvestCost: {
+      Unit: "$/ton",
+      Total: 146,
+      Yearly: fakeYearlyData(),
+    },
+    TransportCost: {
+      Unit: "$/ton",
+      Total: 146,
+      Yearly: fakeYearlyData(),
+    },
+    MoveInCost: {
+      Unit: "$/ton",
+      Total: 146,
+      Yearly: fakeYearlyData(),
+    },
+    FeedstockCost: {
+      Unit: "$/ton",
+      Total: 146,
+      Yearly: fakeYearlyData(),
+    },
+    EquityRecovery: {
+      Unit: "$",
+      Total: 146,
+      Yearly: fakeYearlyData(),
+    },
+    EquityInterest: {
+      Unit: "$",
+      Total: 146,
+      Yearly: fakeYearlyData(),
+    },
+    EquityPrincipalPaid: {
+      Unit: "$",
+      Total: 146,
+      Yearly: fakeYearlyData(),
+    },
+    EquityPrincipalRemaining: {
+      Unit: "$",
+      Total: 146,
+      Yearly: fakeYearlyData(),
+    },
+    DebtRecovery: {
+      Unit: "$",
+      Total: 146,
+      Yearly: fakeYearlyData(),
+    },
+    DebtInterest: {
+      Unit: "$/ton",
+      Total: 146,
+      Yearly: fakeYearlyData(),
+    },
+    DebtPrincipalPaid: {
+      Unit: "$",
+      Total: 146,
+      Yearly: fakeYearlyData(),
+    },
+    DebtPrincipalRemaining: {
+      Unit: "$",
+      Total: 146,
+      Yearly: fakeYearlyData(),
+    },
+    NonFuelExpenses: {
+      Unit: "$",
+      Total: 146,
+      Yearly: fakeYearlyData(),
+    },
+    DebtReserve: {
+      Unit: "$",
+      Total: 146,
+      Yearly: fakeYearlyData(),
+    },
+    Deprecation: {
+      Unit: "$",
+      Total: 146,
+      Yearly: fakeYearlyData(),
+    },
+    IncomeCapacity: {
+      Unit: "$",
+      Total: 146,
+      Yearly: fakeYearlyData(),
+    },
+    InterestDebtReserve: {
+      Unit: "$",
+      Total: 146,
+      Yearly: fakeYearlyData(),
+    },
+    TaxesWithoutCredit: {
+      Unit: "$",
+      Total: 146,
+      Yearly: fakeYearlyData(),
+    },
+    TaxCredit: {
+      Unit: "$",
+      Total: 146,
+      Yearly: fakeYearlyData(),
+    },
+    Taxes: {
+      Unit: "$",
+      Total: 146,
+      Yearly: fakeYearlyData(),
+    },
+    EnergyRevenueRequired: {
+      Unit: "$",
+      Total: 146,
+      Yearly: fakeYearlyData(),
+    },
+    EnergyRevenueRequiredPW: {
+      Unit: "$",
+      Total: 146,
+      Yearly: fakeYearlyData(),
+    },
+    Current$LCOE: {
+      Unit: "$/kWh",
+      Total: 146,
+      Yearly: fakeYearlyData(),
+    },
+    Constant$LCOE: {
+      Unit: "$/kWh",
+      Total: 146,
+      Yearly: fakeYearlyData(),
+    },
+  },
 };
 
 // some fake data to make the line chart look decent
