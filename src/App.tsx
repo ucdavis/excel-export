@@ -29,6 +29,10 @@ function App() {
       yearlyHeaders.push({ name: "Y" + (new Date().getFullYear() + i) });
     }
 
+    // This part increases the width of a chosen column
+    const nameCol = worksheet.getColumn('B');
+    nameCol.width = 38;
+
     worksheet.addTable({
       name: "TechPerf",
       ref: "B2",
@@ -36,15 +40,44 @@ function App() {
       totalsRow: false,
       columns: [{ name: "Technical Performance" }, { name: " " }],
       rows: [
-        ["Project Prescription", "Clearcut"],
-        ["Facility Type", "Bio Fuel"],
-        ["Capital Cost ($)", 123.123],
+        [
+          "Project Prescription",
+          data.Technical.ProjectPrescription.About
+        ],
+        [
+          "Facility Type",
+          data.Technical.FacilityType.About
+        ],
+        [
+          "Capital Cost ($)",
+          data.Technical.CapitalCost.About
+        ],
+        [
+          "Net Electrical Capacity (kWe)",
+          data.Technical.NetElectrical.About
+        ],
+        [
+          "Net Station Efficiency (%)",
+          data.Technical.NetStattion.About
+        ],
+        [
+          "Economic Life (y)",
+          data.Technical.EconomicLife.About
+        ],
+        [
+          "Location",
+          data.Technical.Location.About
+        ],
+        [
+          "Proximity to substation (km)",
+          data.Technical.Proximity.About
+        ],
       ],
     });
 
     worksheet.addTable({
       name: "supply",
-      ref: "B12",
+      ref: "B13",
       headerRow: true,
       totalsRow: false,
       columns: [
@@ -68,7 +101,7 @@ function App() {
 
     worksheet.addTable({
       name: "analysis",
-      ref: "B16",
+      ref: "B17",
       headerRow: true,
       totalsRow: false,
       columns: [
@@ -107,7 +140,7 @@ function App() {
 
     worksheet.addTable({
       name: "lci",
-      ref: "B22",
+      ref: "B23",
       headerRow: true,
       totalsRow: false,
       columns: [
@@ -200,7 +233,7 @@ function App() {
 
     worksheet.addTable({
       name: "lcia",
-      ref: "B37",
+      ref: "B38",
       headerRow: true,
       totalsRow: false,
       columns: [
@@ -251,7 +284,7 @@ function App() {
 
     worksheet.addTable({
       name: "technoeconomic",
-      ref: "B45",
+      ref: "B46",
       headerRow: true,
       totalsRow: false,
       columns: [
@@ -410,7 +443,7 @@ function App() {
 
     worksheet.addTable({
       name: "assumptions",
-      ref: "B102",
+      ref: "B103",
       headerRow: true,
       totalsRow: false,
       columns: [
@@ -495,7 +528,7 @@ function App() {
 
     worksheet.addTable({
       name: "keyReferences",
-      ref: "B122",
+      ref: "B123",
       headerRow: true,
       totalsRow: false,
       columns: [
@@ -569,6 +602,32 @@ const fakeYearlyData = () =>
   Array.from({ length: 30 }, () => Math.floor(Math.random() * 40));
 
 const data = {
+  Technical: {
+    ProjectPrescription: {
+      About: "Treatment"
+    },
+    FacilityType: {
+      About: "Technology"
+    },
+    CapitalCost: {
+      About: "$1231"
+    },
+    NetElectrical: {
+      About: 43
+    },
+    NetStattion: {
+      About: 12
+    },
+    EconomicLife: {
+      About: 4
+    },
+    Location: {
+      About: "23.123131231313123, 11.31231313"
+    },
+    Proximity: {
+      About: "121"
+    }
+  },
   Resources: {
     Feedstock: {
       Total: 123,
