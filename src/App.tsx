@@ -408,6 +408,128 @@ function App() {
       ],
     });
 
+    worksheet.addTable({
+      name: "assumptions",
+      ref: "B102",
+      headerRow: true,
+      totalsRow: false,
+      columns: [
+        { name: "Assumptions" },
+        { name: "Total" },
+      ],
+      rows: [
+        [
+          "LogLength, ft",
+          data.Assumptions.LogLength.Total
+        ],
+        [
+          "LoadWeight, green tons (logs)",
+          data.Assumptions.LoadWeightLogs.Total
+        ],
+        [
+          "LoadWeight, green tons (chips)",
+          data.Assumptions.LoadWeightChips.Total
+        ],
+        [
+          "CTLTrailSpacing, ft",
+          data.Assumptions.CTLTrailSpacing.Total
+        ],
+        [
+          "HardwoodCostPremium, fraction",
+          data.Assumptions.HardwoodCostPremium.Total
+        ],
+        [
+          "ResidueRecoveryFraction for WT systems",
+          data.Assumptions.ResidueRecoveryFractionWT.Total
+        ],
+        [
+          "ResidueRecoveryFraction for CTL",
+          data.Assumptions.ResidueRecoveryFractionCTL.Total
+        ],
+        [
+          "HardwoodFractionCT",
+          data.Assumptions.HardwoodFractionCT.Total
+        ],
+        [
+          "HardwoodFractionSLT",
+          data.Assumptions.HardwoodFractionSLT.Total
+        ],
+        [
+          "HardwoodFractionLLT",
+          data.Assumptions.HardwoodFractionLLT.Total
+        ],
+        [
+          "Feller/Bucker wage (2019)",
+          data.Assumptions.Feller.Total
+        ],
+        [
+          "All Others wage (2019)",
+          data.Assumptions.OtherWages.Total
+        ],
+        [
+          "Benefits and other payroll costs",
+          data.Assumptions.Benefits.Total
+        ],
+        [
+          "OIL_ETC_COST ($/mile)",
+          data.Assumptions.OIL_ETC_COST.Total
+        ],
+        [
+          "DRIVERS_PER_TRUCK",
+          data.Assumptions.DRIVERS_PER_TRUCK.Total
+        ],
+        [
+          "MILES_PER_GALLON",
+          data.Assumptions.MILES_PER_GALLON.Total
+        ],
+        [
+          "FUEL_COST ($/gallon)",
+          data.Assumptions.FUEL_COST.Total 
+        ],
+        [
+          "TRUCK_LABOR ($/hr)",
+          data.Assumptions.TRUCK_LABOR.Total 
+        ],
+      ]
+    });
+
+    worksheet.addTable({
+      name: "keyReferences",
+      ref: "B122",
+      headerRow: true,
+      totalsRow: false,
+      columns: [
+        { name: "Key References" },
+        { name: "Total" },
+      ],
+      rows: [
+        [
+          "Fuel Reduction Cost Simulator",
+          data.KeyRefrences.FuelReduction.Total
+        ],
+        [
+          "Advanced Hardwood Biofuels Northwest",
+          data.KeyRefrences.AdvancedHardwood.Total
+        ],
+        [
+          "California Biomass Collaborative",
+          data.KeyRefrences.CaliforniaBiomass.Total
+        ],
+        [
+          "EPA eGrid",
+          data.KeyRefrences.EPA.Total
+        ],
+        [
+          "GREET model",
+          data.KeyRefrences.GREET.Total
+        ],
+        [
+          "Literature for emission factors",
+          data.KeyRefrences.LiteratureEmission.Total
+        ],
+      ]
+    })
+
     // turn the chart into an image and embed it
     if (chartRef) {
       // we should always have the chart but if it's null for some reason skip it instead of breaking
@@ -422,7 +544,7 @@ function App() {
       });
 
       // insert an image over B2:D6
-      worksheet.addImage(chartImageId2, "B75:J100");
+      worksheet.addImage(chartImageId2, "B72:J100");
     }
 
     const workbookBuffer = await workbook.xlsx.writeBuffer();
@@ -699,6 +821,82 @@ const data = {
       Total: 146,
       Yearly: fakeYearlyData(),
     },
+  },
+  Assumptions: {
+    LogLength: {
+      Total: 43
+    },
+    LoadWeightLogs: {
+      Total: 23
+    },
+    LoadWeightChips: {
+      Total: 65
+    },
+    CTLTrailSpacing: {
+      Total: 23
+    },
+    HardwoodCostPremium: {
+      Total: 0.5
+    },
+    ResidueRecoveryFractionWT: {
+      Total: 0.8
+    },
+    ResidueRecoveryFractionCTL: {
+      Total: 0.35
+    },
+    HardwoodFractionCT: {
+      Total: .452
+    },
+    HardwoodFractionSLT: {
+      Total: .73
+    },
+    HardwoodFractionLLT: {
+      Total: .21
+    },
+    Feller: {
+      Total: 23.53
+    },
+    OtherWages: {
+      Total: 22.32
+    },
+    Benefits: {
+      Total: "42%"
+    },
+    OIL_ETC_COST: {
+      Total: 0.35
+    },
+    DRIVERS_PER_TRUCK: {
+      Total: 1.67
+    },
+    MILES_PER_GALLON: {
+      Total: 6
+    },
+    FUEL_COST: {
+      Total: 3.562
+    },
+    TRUCK_LABOR: {
+      Total: 22.1
+    },
+  },
+  KeyRefrences: {
+    FuelReduction: {
+      Total: 9718
+    },
+    AdvancedHardwood: {
+      Total: 2341
+    },
+    CaliforniaBiomass: {
+      Total: 123
+    },
+    EPA: {
+      Total: 214
+    },
+    GREET: {
+      Total: 112
+    },
+    LiteratureEmission: {
+      Total: 1242
+    }
   },
 };
 
